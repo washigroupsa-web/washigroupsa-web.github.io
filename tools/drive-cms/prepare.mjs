@@ -19,7 +19,7 @@ export function checkManifest(manifest, { dryRun = true, verifyPages = true } = 
     const problems = [];
     if (!/^[A-Z0-9][A-Z0-9_-]{2,64}$/.test(id)) problems.push('invalid Content ID');
     if (!LANGUAGES.has(lang)) problems.push('unsupported language');
-    if (!/^[a-z0-9][a-z0-9-]*\\.html$/.test(entry.page || '')) problems.push('unsafe or invalid page path');
+    if (!/^[a-z0-9][a-z0-9-]*[.]html$/.test(entry.page || '')) problems.push('unsafe or invalid page path');
     if (verifyPages && !existsSync(entry.page || '')) problems.push('target page not in repository');
     if (!STATES.has(entry.status)) problems.push('invalid content status');
     if (!Number.isInteger(entry.version) || entry.version < 1) problems.push('invalid version');
@@ -134,7 +134,7 @@ if (process.argv[1] && import.meta.url === new URL('file://' + process.argv[1]).
     // Output is for PR review in a staging branch, NOT a live-site update.
     if (args.includes('--export-preview') && !report.blocked.length) {
       await mkdir('.cms-staging', { recursive: true });
-      await writeFile('.cms-staging/approved-content.json', JSON.stringify(output, null, 2) + '\\n');
+      await writeFile('.cms-staging/approved-content.json', JSON.stringify(output, null, 2) + String.fromCharCode(10));
     }
     console.log(JSON.stringify({ mode: dryRun ? 'DRY_RUN' : 'STAGING_ONLY',
       ready: report.ready.map(x => x.content_id + ':' + x.language),
