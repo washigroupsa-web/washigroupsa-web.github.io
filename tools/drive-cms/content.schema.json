@@ -1,0 +1,84 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "WASHI GROUP content manifest for staging",
+  "type": "object",
+  "required": [
+    "project",
+    "entries"
+  ],
+  "properties": {
+    "project": {
+      "type": "string",
+      "const": "WASHI_GROUP"
+    },
+    "entries": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "content_id",
+          "page",
+          "language",
+          "status",
+          "rights_status",
+          "title",
+          "version"
+        ],
+        "properties": {
+          "content_id": {
+            "type": "string",
+            "pattern": "^[A-Z0-9][A-Z0-9_-]{2,64}$"
+          },
+          "page": {
+            "type": "string",
+            "pattern": "^[a-z0-9][a-z0-9-]*\\.html$"
+          },
+          "language": {
+            "enum": [
+              "ar",
+              "en"
+            ]
+          },
+          "status": {
+            "enum": [
+              "DRAFT",
+              "IN REVIEW",
+              "APPROVED",
+              "PUBLISHED",
+              "FAILED",
+              "ARCHIVED"
+            ]
+          },
+          "rights_status": {
+            "enum": [
+              "OWNED",
+              "LICENSED",
+              "PERMISSION_GRANTED",
+              "UNKNOWN",
+              "RESTRICTED"
+            ]
+          },
+          "title": {
+            "type": "string",
+            "minLength": 1
+          },
+          "body": {
+            "type": "string"
+          },
+          "google_doc_id": {
+            "type": "string"
+          },
+          "version": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "test_only": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}
