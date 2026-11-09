@@ -41,9 +41,44 @@ function refresh(){show();updateLabel()};document.addEventListener('DOMContentLo
     const a=document.createElement('a');a.href=info.about;a.textContent=about;
     const b=document.createElement('a');b.href=socialHref;b.textContent=social;
     const meaning=document.createElement('a');meaning.href='meaning-of-washi.html';meaning.textContent=heritage;
-    const productLink=document.createElement('a');productLink.href=brand==='bee'?'washi-bee-products.html':'products-washi-art.html';productLink.textContent=brand==='bee'?(language==='en'?'WASHI BEE Products':'منتجات وشي بي'):(language==='en'?'Our Products':'منتجاتنا');
-    if(brand==='bee'||brand==='art'){nav.append(productLink)}
-    if(brand==='bee'){const giftsLink=document.createElement('a');giftsLink.href='washi-bee-gifts.html';giftsLink.textContent=language==='en'?'Bundles & Gifts':'البكيج والهدايا';nav.append(giftsLink)}
+    // WASHI BEE: accessible two-level catalog with direct product and bundle links.
+    // Keep other WASHI GROUP brands unaffected.
+    if(brand==='bee'){
+      const home=document.createElement('a');home.href='washi-bee.html';home.textContent=language==='en'?'WASHI BEE Home':'الرئيسية';nav.append(home);
+      const makeMenu=(title,items)=>{
+        const menu=document.createElement('details');menu.className='washi-bee-nav-menu';
+        const summary=document.createElement('summary');summary.textContent=title;menu.append(summary);
+        const panel=document.createElement('div');panel.className='washi-bee-nav-panel';
+        items.forEach(item=>{
+          if(item.label){const caption=document.createElement('strong');caption.className='washi-bee-nav-caption';caption.textContent=item.label;panel.append(caption)}
+          else{const link=document.createElement('a');link.href=item.href;link.textContent=item.text;panel.append(link)}
+        });
+        menu.append(panel);return menu;
+      };
+      const en=language==='en';
+      const products=[
+        {text:en?'All Products':'جميع المنتجات',href:'washi-bee-products.html'},
+        {label:en?'Natural Creams':'الكريمات الطبيعية'},
+        {text:en?'WASHI MEELE':'وشي ميلي',href:'washi-bee-meele.html'},
+        {label:en?'Natural Soaps':'الصابون الطبيعي'},
+        {text:en?'WASHI SAPOUNI':'وشي سابوني',href:'washi-bee-sapouni.html'},
+        {label:en?'Perfumes':'العطور'},
+        {text:en?'Mykonos':'ميكونوس',href:'washi-bee-mykonos.html'},
+        {text:en?'Santorini':'سانتوريني',href:'washi-bee-santorini.html'},
+        {text:en?'Corfu':'كورفو',href:'washi-bee-corfu.html'}
+      ];
+      const bundles=[
+        {text:en?'All Bundles & Gifts':'جميع البكيجات والهدايا',href:'washi-bee-gifts.html'},
+        {text:en?'WASHI MEELE Bundle':'بكيج وشي ميلي',href:'washi-bee-bundle-meele.html'},
+        {text:en?'WASHI PERFUME Bundle':'بكيج وشي بيرفيوم',href:'washi-bee-bundle-perfume.html'},
+        {text:en?'WASHI SAPOUNI Bundle':'بكيج وشي سابوني',href:'washi-bee-bundle-sapouni.html'}
+      ];
+      nav.append(makeMenu(en?'Products':'المنتجات',products));
+      nav.append(makeMenu(en?'Bundles & Gifts':'البكيج والهدايا',bundles));
+      const shop=document.createElement('a');shop.href='https://salla.sa/washi-bee';shop.target='_blank';shop.rel='noopener noreferrer';shop.textContent=en?'Shop on Salla':'تسوّق من سلة';nav.append(shop);
+    }else if(brand==='art'){
+      const productLink=document.createElement('a');productLink.href='products-washi-art.html';productLink.textContent=language==='en'?'Our Products':'منتجاتنا';nav.append(productLink);
+    }
     const groupHome=document.createElement('a');groupHome.href='index.html';groupHome.textContent=language==='en'?'WASHI GROUP':'مجموعة وشي';nav.append(groupHome,a,meaning,b);
   }
   document.addEventListener('DOMContentLoaded',()=>{refreshPermanentNavigation();
