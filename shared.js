@@ -13,7 +13,7 @@ const own=document.createElement('section');own.className='washi-social-panel';c
  {key:'facebook',ar:'فيسبوك',en:'Facebook',url:selected.facebook,color:'#0866FF'},
  {key:'linktree',ar:'جميع روابطنا (Linktree)',en:'All our links (Linktree)',url:selected.linktree,color:'#43E55E'}]);arr.find(x=>x.key==='tiktok').ar='تيك توك (@washiart.sa)';arr.find(x=>x.key==='tiktok').en='TikTok (@washiart.sa)';}
  arr.forEach(x=>g2.append(makeTile(x,lang)))}else{Object.entries(brands).forEach(([key,b])=>{const a=document.createElement('a');a.className='washi-social-tile';a.href={'art':'washi-art.html','bee':'washi-bee.html','alanood':'alanood-alnaimi.html'}[key];const span=document.createElement('span');span.className='washi-social-name';span.textContent=b[lang];a.append(span);g2.append(a)})}own.append(g2);row.append(own);
-w.append(row);const notice=document.createElement('div');notice.className='washi-social-notice';notice.textContent=linkData.notes[lang];w.append(notice);region.append(w);}
+w.append(row);const notice=document.createElement('div');notice.className='washi-social-notice';notice.textContent=brand==='bee'?(lang==='en'?'WASHI BEE channels. TikTok @washiart.sa is shared with owner approval.':'روابط وشي بي المعتمدة؛ حساب تيك توك @washiart.sa مستخدم بموافقة المالكة.'):linkData.notes[lang];w.append(notice);region.append(w);}
 function updateLabel(){const lang=currentLanguage();document.querySelectorAll('[data-washi-label-ar]').forEach(e=>e.textContent=e.getAttribute('data-washi-label-'+lang)||'');}
 function refresh(){show();updateLabel()};document.addEventListener('DOMContentLoaded',()=>{refresh();const obs=new MutationObserver(()=>{refresh()});obs.observe(document.documentElement,{attributes:true,attributeFilter:['lang']});});
 })();
@@ -23,6 +23,7 @@ function refresh(){show();updateLabel()};document.addEventListener('DOMContentLo
   const pages={group:{about:'about-washi-group.html',home:'index.html'},art:{about:'about-washi-art.html',home:'washi-art.html'},bee:{about:'about-washi-bee.html',home:'washi-bee.html'},alanood:{about:'about-alanood-alnaimi.html',home:'alanood-alnaimi.html'}};
   function refreshPermanentNavigation(){
     const brand=document.body.getAttribute('data-washi-brand')||'group', info=pages[brand]||pages.group;
+    if(brand==='bee'){document.getElementById('washi-permanent-navigation')?.remove();return;}
     const language=document.documentElement.lang==='en'?'en':'ar';
     document.querySelectorAll('[data-wh-ar][data-wh-en]').forEach(el=>{
       el.textContent=el.getAttribute(language==='ar'?'data-wh-ar':'data-wh-en');
@@ -84,4 +85,11 @@ function refresh(){show();updateLabel()};document.addEventListener('DOMContentLo
   document.addEventListener('DOMContentLoaded',()=>{refreshPermanentNavigation();
     const obs=new MutationObserver(refreshPermanentNavigation);obs.observe(document.documentElement,{attributes:true,attributeFilter:['lang']});
   });
+})();
+
+/* Load WASHI BEE unified header/footer only on WASHI BEE pages. */
+(function(){
+ if(!document.body||document.body.getAttribute('data-washi-brand')!=='bee')return;
+ const style=document.createElement('link');style.rel='stylesheet';style.href='washi-bee-shell.css';document.head.appendChild(style);
+ const script=document.createElement('script');script.src='washi-bee-shell.js';document.body.appendChild(script);
 })();
