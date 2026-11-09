@@ -41,7 +41,7 @@ function headerHTML(){
   a('index.html',t('العودة إلى مجموعة وشي','Back to WASHI GROUP'))+
   '</div></div><div class="bee-shell-main bee-shell-inner">'+
   a('washi-bee.html','<logo>') // replaced below before inserting
-  .replace('&lt;logo&gt;','<img src="assets/washi-bee-official-logo.webp" alt="'+safe(t('شعار وشي بي','WASHI BEE logo'))+'"><span><strong>'+safe(t('وشي بي','WASHI BEE'))+'</strong><small>WASHI BEE</small></span>')
+  .replace('&lt;logo&gt;','<img src="assets/washi-bee-approved-logo.png" alt="'+safe(t('شعار وشي بي','WASHI BEE logo'))+'"><span><strong>'+safe(t('وشي بي','WASHI BEE'))+'</strong><small>WASHI BEE</small></span>')
   .replace('<a ','<a class="bee-shell-logo" ')+
   '<nav id="bee-shell-nav" class="bee-shell-nav" aria-label="'+safe(t('القائمة الرئيسية لوشي بي','WASHI BEE main navigation'))+'">'+
   a('washi-bee.html',t('الرئيسية','Home'),current==='washi-bee.html'?' aria-current="page"':'')+
@@ -66,15 +66,17 @@ function footerHTML(){
    ext(identity.linktree,t('جميع روابطنا — لينك تري','All links — Linktree'))
  ].filter(Boolean).map(s=>s.replace('<a ','<a class="bee-shell-footer-link" ')).join('');
  return '<div class="bee-shell-inner bee-shell-footer-grid">'+
-  '<div><div class="bee-shell-footer-brand"><img src="assets/washi-bee-official-logo.webp" alt="'+safe(t('شعار وشي بي','WASHI BEE logo'))+'"><div><h2>'+safe(t('وشي بي','WASHI BEE'))+'</h2><span>WASHI BEE</span></div></div><p>'+safe(t('من طبيعة اليونان... إلى حياتك. اكتشفي العناية الطبيعية والصابون والعطور والبكجات والهدايا.','From Greek nature to your life. Explore skincare, soaps, perfumes, bundles and gifts.'))+'</p></div>'+
+  '<div><div class="bee-shell-footer-brand"><img src="assets/washi-bee-approved-logo.png" alt="'+safe(t('شعار وشي بي','WASHI BEE logo'))+'"><div><h2>'+safe(t('وشي بي','WASHI BEE'))+'</h2><span>WASHI BEE</span></div></div><p>'+safe(t('من طبيعة اليونان... إلى حياتك. اكتشفي العناية الطبيعية والصابون والعطور والبكجات والهدايا.','From Greek nature to your life. Explore skincare, soaps, perfumes, bundles and gifts.'))+'</p></div>'+
   '<div><h3>'+safe(t('تصفّح الموقع','Explore'))+'</h3>'+
   [a('washi-bee.html',t('الرئيسية','Home')),a('washi-bee-products.html',t('المنتجات','Products')),ext(bundleUrl,t('البكيج والهدايا','Bundles & Gifts')),a('about-washi-bee.html',t('من نحن','About Us')),ext(identity.salla||'https://salla.sa/washi-bee',t('متجر سلة','Salla Store'))].map(s=>s.replace('<a ','<a class="bee-shell-footer-link" ')).join('')+
   '</div><div><h3>'+safe(t('تواصل معنا','Contact'))+'</h3>'+
   ext(whatsapp,t('واتساب بزنس: 0537505583','WhatsApp: +966 53 750 5583')).replace('<a ','<a class="bee-shell-footer-link" ')+
   a('mailto:'+email,email,' class="bee-shell-footer-link"')+
   '<h3>'+safe(t('تابعينا','Follow us'))+'</h3>'+social+
-  '</div><div><h3>'+safe(t('البكيجات','Bundles'))+'</h3>'+
-  [ext(bundleUrl,t('عرض جميع البكجات والهدايا','View Bundles & Gifts'))].map(s=>s.replace('<a ','<a class="bee-shell-footer-link" ')).join('')+
+  '</div><div><h3>'+safe(t('بيانات النشاط','Business information'))+'</h3>'+
+  '<p>'+safe(t('رقم وثيقة العمل الحر','Freelance certificate number'))+': <strong dir="ltr">FL-747363188</strong></p>'+
+  ext('https://freelance.sa/ar/certificate-validation',t('التحقق من الوثيقة عبر منصة العمل الحر','Verify on official freelance portal')).replace('<a ','<a class="bee-shell-footer-link" ')+
+  '<p>'+safe(t('يمكن التحقق من حالة الوثيقة وصلاحيتها عبر المنصة الرسمية.','Check the certificate status and validity on the official portal.'))+'</p>'+
   '</div></div>'+
   '<div class="bee-shell-footer-bottom"><div class="bee-shell-inner"><span>© 2026 WASHI BEE · WASHI GROUP</span>'+a('index.html',t('العودة إلى مجموعة وشي','Back to WASHI GROUP'))+'</div></div>';
 }
