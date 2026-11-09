@@ -1,0 +1,34 @@
+name: WASHI Drive CMS — staging validation only
+on:
+  push:
+    branches:
+      - feature/drive-cms-staging-2026-11-09
+    paths:
+      - 'tools/drive-cms/**'
+      - '.github/workflows/drive-cms-staging.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  approval-gates:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Check syntax
+        run: node --check tools/drive-cms/prepare.mjs
+      - name: Test approval, rights and duplicate gates
+        run: node tools/drive-cms/test.mjs
+      - name: Dry-run synthetic data (expected to be blocked)
+        shell: bash
+        run: |
+          set +e
+          node tools/drive-cms/prepare.mjs --fixture tools/drive-cms/fixture.test.json
+          result=$?
+          if [ "$result" -ne 1 ]; then
+            echo "Safety check failed: incomplete fixture must be blocked."
+            exit 1
+          fi
+          echo "PASS: invalid sample stopped without publishing."
