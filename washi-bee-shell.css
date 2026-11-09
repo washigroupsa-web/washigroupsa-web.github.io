@@ -1,0 +1,67 @@
+/* WASHI BEE — unified brand header & footer; scoped to Bee pages */
+#washi-bee-site-header,#washi-bee-site-footer{font-family:Cairo,"Segoe UI",Tahoma,Arial,sans-serif;box-sizing:border-box}
+#washi-bee-site-header *,#washi-bee-site-footer *{box-sizing:border-box}
+#washi-bee-site-header{position:sticky!important;top:0;z-index:900!important;background:#fffbf6!important;color:#442f29!important;border-bottom:1px solid #e6d6c6!important;box-shadow:0 5px 26px #4e311d11}
+#washi-bee-site-header a,#washi-bee-site-footer a{text-decoration:none}
+#washi-bee-site-header .bee-shell-top{background:#50382d;color:#fff0da;font-size:11px;line-height:1.5;padding:6px 0}
+.bee-shell-inner{width:min(1160px,calc(100% - 36px));margin-inline:auto}
+#washi-bee-site-header .bee-shell-top .bee-shell-inner{display:flex;justify-content:space-between;align-items:center;gap:12px}
+#washi-bee-site-header .bee-shell-top a{color:#ffebce}
+#washi-bee-site-header .bee-shell-main{display:flex;align-items:center;gap:20px;padding:10px 0;min-height:78px}
+#washi-bee-site-header .bee-shell-logo{display:inline-flex;align-items:center;flex-shrink:0;gap:10px;min-width:0;color:#50372b}
+#washi-bee-site-header .bee-shell-logo img{width:53px;height:53px;object-fit:contain;border-radius:50%;border:1px solid #dec7ab;background:#fff}
+#washi-bee-site-header .bee-shell-logo strong{display:block;font-size:18px;line-height:1.35;color:#614330}
+#washi-bee-site-header .bee-shell-logo small{display:block;font-size:10px;letter-spacing:.12em;font-family:Georgia,serif;color:#a07150}
+#washi-bee-site-header .bee-shell-nav{display:flex;flex:1;align-items:center;justify-content:center;gap:clamp(6px,1vw,17px)}
+#washi-bee-site-header .bee-shell-nav>a,#washi-bee-site-header .bee-shell-dropdown>summary{display:inline-flex;align-items:center;justify-content:center;gap:4px;border-radius:10px;padding:10px 7px;color:#634435;font-size:12px;font-weight:750;white-space:nowrap;cursor:pointer;background:transparent;border:0}
+#washi-bee-site-header .bee-shell-nav>a:hover,#washi-bee-site-header .bee-shell-dropdown>summary:hover{color:#9c5f3b;background:#faebdd}
+#washi-bee-site-header .bee-shell-nav a[aria-current=page]{background:#f4e3d0;color:#874d30}
+#washi-bee-site-header .bee-shell-dropdown{position:relative;margin:0}
+#washi-bee-site-header .bee-shell-dropdown>summary{list-style:none}
+#washi-bee-site-header .bee-shell-dropdown>summary::-webkit-details-marker{display:none}
+#washi-bee-site-header .bee-shell-dropdown>summary:after{content:"⌄";margin-inline-start:4px;font-size:17px;line-height:.7}
+#washi-bee-site-header .bee-shell-dropdown[open]>summary{background:#f6e7d7;color:#8c4e33}
+#washi-bee-site-header .bee-shell-dropdown-panel{position:absolute;top:calc(100% + 7px);inset-inline-start:0;z-index:920;width:250px;max-height:min(65vh,450px);overflow-y:auto;border-radius:15px;border:1px solid #e1cbbb;background:#fffdfa;padding:9px;box-shadow:0 14px 32px #41271526;text-align:start}
+#washi-bee-site-header .bee-shell-dropdown-panel a{display:block;color:#624636!important;font-size:12px;font-weight:650;line-height:1.55;padding:10px 12px;border-radius:8px}
+#washi-bee-site-header .bee-shell-dropdown-panel a:hover,#washi-bee-site-header .bee-shell-dropdown-panel a:focus-visible{background:#f7ebdf}
+#washi-bee-site-header .bee-shell-dropdown-panel .bee-shell-caption{display:block;color:#9f6a4d;font-size:10px;font-weight:800;padding:9px 12px 4px;border-top:1px solid #f1e5d8}
+#washi-bee-site-header .bee-shell-actions{display:flex;align-items:center;gap:8px;flex-shrink:0}
+#washi-bee-site-header .bee-shell-store{display:inline-flex;align-items:center;justify-content:center;padding:10px 15px;border-radius:30px;background:#96613f!important;color:white!important;font-size:12px;font-weight:800;white-space:nowrap}
+#washi-bee-site-header .bee-shell-store:hover{background:#76472e!important}
+#washi-bee-site-header .bee-shell-lang,#washi-bee-site-header .bee-shell-mobile{border:1px solid #d8c2ac;border-radius:10px;background:white;color:#67462e;font-size:12px;font-weight:800;padding:9px 10px;cursor:pointer}
+#washi-bee-site-header .bee-shell-mobile{display:none}
+#washi-bee-site-header button:focus-visible,#washi-bee-site-header summary:focus-visible,#washi-bee-site-header a:focus-visible,
+#washi-bee-site-footer a:focus-visible{outline:3px solid #ad7c55;outline-offset:3px}
+#washi-bee-site-footer{background:#332921!important;color:#f4e7d9!important;padding:42px 0 0!important;font-size:13px!important;text-align:start!important;line-height:1.9}
+#washi-bee-site-footer .bee-shell-footer-grid{display:grid;grid-template-columns:1.5fr 1fr 1.1fr 1.2fr;gap:35px;padding-bottom:32px}
+#washi-bee-site-footer h2,#washi-bee-site-footer h3{color:#f8e5c8!important;font-weight:800!important;margin:0 0 12px!important;font-size:17px!important;line-height:1.6}
+#washi-bee-site-footer .bee-shell-footer-brand{display:flex;align-items:center;gap:13px}
+#washi-bee-site-footer .bee-shell-footer-brand img{width:62px;height:62px;border-radius:50%;object-fit:contain;background:#fff6ea}
+#washi-bee-site-footer p{margin:8px 0;color:#d7c5b7;font-size:12px;line-height:2}
+#washi-bee-site-footer .bee-shell-footer-link{display:block;color:#e4cebd!important;font-size:12px;margin:8px 0;overflow-wrap:anywhere}
+#washi-bee-site-footer .bee-shell-footer-link:hover{text-decoration:underline;color:white!important}
+#washi-bee-site-footer .bee-shell-footer-bottom{background:#281f1a;border-top:1px solid #695141;padding:15px 0;color:#d7c3b4}
+#washi-bee-site-footer .bee-shell-footer-bottom .bee-shell-inner{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;align-items:center}
+#washi-bee-site-footer .bee-shell-footer-bottom a{color:#f0d8b9}
+@media(max-width:1110px){#washi-bee-site-header .bee-shell-main{flex-wrap:wrap;justify-content:space-between;gap:8px 14px}
+#washi-bee-site-header .bee-shell-nav{order:5;flex-basis:100%;justify-content:center;border-top:1px solid #f1e1d1;padding-top:4px}
+#washi-bee-site-header .bee-shell-logo img{width:45px;height:45px}
+#washi-bee-site-footer .bee-shell-footer-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}}
+@media(max-width:740px){#washi-bee-site-header .bee-shell-main{flex-wrap:wrap;min-height:65px;padding:8px 0}
+#washi-bee-site-header .bee-shell-top .bee-shell-inner{font-size:10px}
+#washi-bee-site-header .bee-shell-logo img{width:43px;height:43px}
+#washi-bee-site-header .bee-shell-logo strong{font-size:16px}
+#washi-bee-site-header .bee-shell-mobile{display:inline-flex}
+#washi-bee-site-header .bee-shell-actions{margin-inline-start:auto}
+#washi-bee-site-header .bee-shell-store{padding:9px 11px}
+#washi-bee-site-header .bee-shell-nav{display:none;order:8;flex-basis:100%;align-items:stretch;flex-direction:column;gap:1px;justify-content:flex-start;max-height:65vh;overflow-y:auto;padding:8px 0}
+#washi-bee-site-header .bee-shell-nav.bee-shell-nav-open{display:flex}
+#washi-bee-site-header .bee-shell-nav>a,#washi-bee-site-header .bee-shell-dropdown>summary{justify-content:flex-start;width:100%;text-align:start;padding:11px 12px;white-space:normal}
+#washi-bee-site-header .bee-shell-dropdown-panel{position:static;box-shadow:none;border:0;background:#fff4e9;width:100%;max-height:none;margin-top:4px}
+#washi-bee-site-footer .bee-shell-footer-grid{grid-template-columns:1fr 1fr;gap:24px 15px}}
+@media(max-width:430px){#washi-bee-site-header .bee-shell-main{gap:6px}
+#washi-bee-site-header .bee-shell-logo small{font-size:9px}
+#washi-bee-site-header .bee-shell-actions{gap:5px}
+#washi-bee-site-header .bee-shell-lang,#washi-bee-site-header .bee-shell-mobile{padding:8px 7px}
+#washi-bee-site-header .bee-shell-store{font-size:11px;padding:8px 10px}
+#washi-bee-site-footer .bee-shell-footer-grid{grid-template-columns:1fr}}
