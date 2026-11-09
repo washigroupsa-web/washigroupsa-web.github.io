@@ -68,12 +68,7 @@ function refresh(){show();updateLabel()};document.addEventListener('DOMContentLo
         {text:en?'Santorini':'سانتوريني',href:'washi-bee-santorini.html'},
         {text:en?'Corfu':'كورفو',href:'washi-bee-corfu.html'}
       ];
-      const bundles=[
-        {text:en?'All Bundles & Gifts':'جميع البكيجات والهدايا',href:'washi-bee-gifts.html'},
-        {text:en?'WASHI MEELE Bundle':'بكيج وشي ميلي',href:'washi-bee-bundle-meele.html'},
-        {text:en?'WASHI PERFUME Bundle':'بكيج وشي بيرفيوم',href:'washi-bee-bundle-perfume.html'},
-        {text:en?'WASHI SAPOUNI Bundle':'بكيج وشي سابوني',href:'washi-bee-bundle-sapouni.html'}
-      ];
+      const bundles=[{text:en?'View Bundles & Gifts on Salla':'عرض البكيج والهدايا على سلة',href:'https://salla.sa/washi-bee/washi-bee-gifts/p520918653'}];
       nav.append(makeMenu(en?'Products':'المنتجات',products));
       nav.append(makeMenu(en?'Bundles & Gifts':'البكيج والهدايا',bundles));
       const shop=document.createElement('a');shop.href='https://salla.sa/washi-bee';shop.target='_blank';shop.rel='noopener noreferrer';shop.textContent=en?'Shop on Salla':'تسوّق من سلة';nav.append(shop);
