@@ -1,0 +1,18 @@
+/* Shared bilingual and brand-specific social link cards — WASHI GROUP */
+.washi-social-wrap{max-width:1190px;margin:40px auto;padding:0 22px;direction:inherit;font-family:Cairo,'Segoe UI',Tahoma,sans-serif}
+.washi-social-panels{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.washi-social-panel{background:#fffefa;color:#342d2b;border:1px solid #e5d8cd;border-radius:18px;padding:22px;box-shadow:0 7px 28px rgba(75,55,42,.055)}
+.washi-social-panel h2{font-size:20px;margin:0 0 4px;font-weight:750;color:#714833}
+.washi-social-panel p{font-size:12px;color:#89766d;margin:0 0 15px;line-height:1.9}
+.washi-social-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.washi-social-tile{min-height:91px;min-width:0;border:1px solid #e5d9d0;border-radius:13px;padding:12px 8px;background:white;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;text-align:center;text-decoration:none;color:#4a3931;line-height:1.35;transition:transform .18s,border-color .18s}
+.washi-social-tile[href]:hover{transform:translateY(-2px);border-color:#bc896e;background:#fff9f3}
+.washi-social-icon{width:26px;height:26px;object-fit:contain;display:block}
+.washi-social-tile .washi-social-name{font-size:11px;font-weight:750;overflow-wrap:anywhere}
+.washi-social-tile.washi-pending{opacity:.5;cursor:default;background:#f7f4f0}
+.washi-social-tile.washi-pending .washi-social-name{font-weight:600}
+.washi-social-tile .washi-social-status{font-size:9px;color:#a18c7d}
+.washi-social-notice{padding-top:12px;font-size:10px;color:#8e796c;line-height:1.8}
+@media(max-width:720px){.washi-social-panels{grid-template-columns:1fr}.washi-social-panel{padding:15px}.washi-social-tile{min-height:84px}.washi-social-grid{gap:7px}}
+
+#washi-permanent-navigation{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:12px;padding:13px 12px;background:#fff8f1;border-bottom:1px solid #eadbd0;z-index:20;position:relative}#washi-permanent-navigation a{display:inline-flex;text-align:center;align-items:center;justify-content:center;padding:9px 20px;border:1px solid #dcc7b9;border-radius:22px;color:#754d3a!important;background:white!important;font-weight:750;font:inherit;text-decoration:none!important}#washi-permanent-navigation a:hover{background:#f4e1d1!important}
