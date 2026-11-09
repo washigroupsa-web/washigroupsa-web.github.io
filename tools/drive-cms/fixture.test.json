@@ -1,0 +1,38 @@
+{
+  "project": "WASHI_GROUP",
+  "entries": [
+    {
+      "content_id": "TEST-WG-001",
+      "page": "washi-bee.html",
+      "language": "ar",
+      "status": "DRAFT",
+      "rights_status": "OWNED",
+      "title": "مسودة تجريبية — لا تنشر",
+      "body": "هذا مثال داخلي غير حقيقي",
+      "version": 1,
+      "test_only": true
+    },
+    {
+      "content_id": "TEST-WG-002",
+      "page": "washi-bee.html",
+      "language": "en",
+      "status": "APPROVED",
+      "rights_status": "OWNED",
+      "title": "TEST ONLY — not a real website update",
+      "body": "Synthetic sample approved to test the gate; never deploy",
+      "version": 1,
+      "test_only": true
+    },
+    {
+      "content_id": "TEST-WG-003",
+      "page": "washi-bee.html",
+      "language": "ar",
+      "status": "APPROVED",
+      "rights_status": "UNKNOWN",
+      "title": "تجربة حقوق غير موثقة",
+      "body": "غير قابل للنشر",
+      "version": 1,
+      "test_only": true
+    }
+  ]
+}
