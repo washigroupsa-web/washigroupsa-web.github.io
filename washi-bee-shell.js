@@ -3,6 +3,7 @@
 'use strict';
 if(document.body.getAttribute('data-washi-brand')!=='bee')return;
 const identity=window.WASHI_LINKS?.brand_links?.bee||{};
+const bundleUrl='https://salla.sa/washi-bee/washi-bee-gifts/p520918653';
 const safe=(x)=>String(x||'').replace(/[&<>"']/g,(s)=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[s]));
 const isEnglish=()=>document.documentElement.lang==='en';
 const t=(ar,en)=>isEnglish()?en:ar;
@@ -34,12 +35,6 @@ function headerHTML(){
  a('washi-bee-santorini.html',t('سانتوريني','Santorini')),
  a('washi-bee-corfu.html',t('كورفو','Corfu'))
  ];
- const gifts=[
- a('washi-bee-gifts.html',t('جميع البكيجات والهدايا','All bundles & gifts')),
- a('washi-bee-bundle-meele.html',t('بكيج وشي ميلي','WASHI MEELE Bundle')),
- a('washi-bee-bundle-perfume.html',t('بكيج وشي بيرفيوم','WASHI PERFUME Bundle')),
- a('washi-bee-bundle-sapouni.html',t('بكيج وشي سابوني','WASHI SAPOUNI Bundle'))
- ];
  const current=location.pathname.split('/').pop()||'washi-bee.html';
  return '<div class="bee-shell-top"><div class="bee-shell-inner">'+
   '<span>'+safe(t('من طبيعة اليونان... إلى حياتك','FROM GREEK NATURE... TO YOUR LIFE'))+'</span>'+
@@ -51,7 +46,7 @@ function headerHTML(){
   '<nav id="bee-shell-nav" class="bee-shell-nav" aria-label="'+safe(t('القائمة الرئيسية لوشي بي','WASHI BEE main navigation'))+'">'+
   a('washi-bee.html',t('الرئيسية','Home'),current==='washi-bee.html'?' aria-current="page"':'')+
   menu(t('المنتجات','Products'),prod)+
-  menu(t('البكيج والهدايا','Bundles & Gifts'),gifts)+
+  ext(bundleUrl,t('البكيج والهدايا','Bundles & Gifts'))+
   a('about-washi-bee.html',t('من نحن','About'),current==='about-washi-bee.html'?' aria-current="page"':'')+
   a('#washi-bee-site-footer',t('تواصل معنا','Contact'))+
   '</nav>'+
@@ -73,13 +68,13 @@ function footerHTML(){
  return '<div class="bee-shell-inner bee-shell-footer-grid">'+
   '<div><div class="bee-shell-footer-brand"><img src="assets/washi-bee-official-logo.webp" alt="'+safe(t('شعار وشي بي','WASHI BEE logo'))+'"><div><h2>'+safe(t('وشي بي','WASHI BEE'))+'</h2><span>WASHI BEE</span></div></div><p>'+safe(t('من طبيعة اليونان... إلى حياتك. اكتشفي العناية الطبيعية والصابون والعطور والبكجات والهدايا.','From Greek nature to your life. Explore skincare, soaps, perfumes, bundles and gifts.'))+'</p></div>'+
   '<div><h3>'+safe(t('تصفّح الموقع','Explore'))+'</h3>'+
-  [a('washi-bee.html',t('الرئيسية','Home')),a('washi-bee-products.html',t('المنتجات','Products')),a('washi-bee-gifts.html',t('البكيج والهدايا','Bundles & Gifts')),a('about-washi-bee.html',t('من نحن','About Us')),ext(identity.salla||'https://salla.sa/washi-bee',t('متجر سلة','Salla Store'))].map(s=>s.replace('<a ','<a class="bee-shell-footer-link" ')).join('')+
+  [a('washi-bee.html',t('الرئيسية','Home')),a('washi-bee-products.html',t('المنتجات','Products')),ext(bundleUrl,t('البكيج والهدايا','Bundles & Gifts')),a('about-washi-bee.html',t('من نحن','About Us')),ext(identity.salla||'https://salla.sa/washi-bee',t('متجر سلة','Salla Store'))].map(s=>s.replace('<a ','<a class="bee-shell-footer-link" ')).join('')+
   '</div><div><h3>'+safe(t('تواصل معنا','Contact'))+'</h3>'+
   ext(whatsapp,t('واتساب بزنس: 0537505583','WhatsApp: +966 53 750 5583')).replace('<a ','<a class="bee-shell-footer-link" ')+
   a('mailto:'+email,email,' class="bee-shell-footer-link"')+
   '<h3>'+safe(t('تابعينا','Follow us'))+'</h3>'+social+
   '</div><div><h3>'+safe(t('البكيجات','Bundles'))+'</h3>'+
-  [a('washi-bee-bundle-meele.html',t('بكيج وشي ميلي','WASHI MEELE Bundle')),a('washi-bee-bundle-perfume.html',t('بكيج وشي بيرفيوم','WASHI PERFUME Bundle')),a('washi-bee-bundle-sapouni.html',t('بكيج وشي سابوني','WASHI SAPOUNI Bundle'))].map(s=>s.replace('<a ','<a class="bee-shell-footer-link" ')).join('')+
+  [ext(bundleUrl,t('عرض جميع البكجات والهدايا','View Bundles & Gifts'))].map(s=>s.replace('<a ','<a class="bee-shell-footer-link" ')).join('')+
   '</div></div>'+
   '<div class="bee-shell-footer-bottom"><div class="bee-shell-inner"><span>© 2026 WASHI BEE · WASHI GROUP</span>'+a('index.html',t('العودة إلى مجموعة وشي','Back to WASHI GROUP'))+'</div></div>';
 }
