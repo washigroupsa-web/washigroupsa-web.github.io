@@ -1,0 +1,35 @@
+name: WASHI MEELE gallery — staging visual QA
+on:
+  push:
+    branches:
+      - feature/washi-meele-gallery-rebased-2026-11-10
+    paths:
+      - 'washi-bee-meele.html'
+      - 'assets/washi-meele-gallery-*'
+      - 'tools/washi-bee-review/meele-gallery-qa.mjs'
+      - '.github/workflows/washi-meele-gallery-review.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  visual-gallery-review:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install Chromium for isolated QA
+        run: |
+          npm install --no-save playwright@1.58.2
+          npx playwright install --with-deps chromium
+      - name: Test six gallery images, bilingual labels, mobile/desktop layout and Salla links
+        run: node tools/washi-bee-review/meele-gallery-qa.mjs
+      - name: Archive screenshots and QA report (never deploy)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: WASHI-MEELE-six-image-review
+          path: qa-meele-gallery/
+          retention-days: 7
+          if-no-files-found: ignore
