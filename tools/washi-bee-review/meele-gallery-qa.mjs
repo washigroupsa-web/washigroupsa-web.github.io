@@ -48,6 +48,8 @@ try{
        originalMainProductImagePresent:!!document.querySelector('img[src="assets/washi-meele-approved.png"]')
       };
     });
+    await page.evaluate(()=>window.scrollTo(0,0));
+    await page.waitForTimeout(250);
     await page.screenshot({path:path.join(captures,'meele-'+device+'-'+lang+'.png'),fullPage:true,animations:'disabled'});
     const state=result.state;
     result.passed=result.count===6
