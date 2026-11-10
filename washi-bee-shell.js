@@ -28,6 +28,10 @@ function headerHTML(){
  a('washi-bee-products.html',t('جميع المنتجات','All products')),
  caption('الكريمات الطبيعية','Natural creams'),
  a('washi-bee-meele.html',t('وشي ميلي','WASHI MEELE')),
+ a('washi-bee-meele.html#meele-product',t('↳ المنتج والمواصفات','↳ Product & Details')),
+ a('washi-bee-meele.html#meele-story',t('↳ قصة وشي ميلي','↳ Our Story')),
+ a('washi-bee-meele.html#meele-making',t('↳ طريقة صنع وشي ميلي','↳ Behind the Ingredients')),
+ a('washi-bee-meele.html#meele-use',t('↳ طريقة الاستخدام','↳ How to Use')),
  caption('الصابون الطبيعي','Natural soaps'),
  a('washi-bee-sapouni.html',t('وشي سابوني','WASHI SAPOUNI')),
  caption('العطور','Perfumes'),
@@ -101,6 +105,7 @@ function render(){
  header.innerHTML=headerHTML();
  const nav=header.querySelector('#bee-shell-nav'),mobile=header.querySelector('#bee-shell-mobile');
  if(wasOpen){nav.classList.add('bee-shell-nav-open');mobile.setAttribute('aria-expanded','true')}
+ nav.querySelectorAll('a').forEach(link=>link.addEventListener('click',()=>{nav.classList.remove('bee-shell-nav-open');mobile.setAttribute('aria-expanded','false');header.querySelectorAll('details').forEach(d=>d.open=false)}));
  mobile.addEventListener('click',()=>{
   const open=nav.classList.toggle('bee-shell-nav-open');mobile.setAttribute('aria-expanded',String(open));
  });
