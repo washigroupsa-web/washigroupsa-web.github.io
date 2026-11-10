@@ -53,3 +53,20 @@ jobs:
           name: washi-bee-development-site-snapshot
           path: /tmp/washi-bee-development-snapshot.zip
           retention-days: 7
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install isolated visual testing tools
+        run: |
+          npm install --no-save playwright@1.58.2
+          npx playwright install --with-deps chromium
+      - name: Render WASHI BEE screenshots at mobile and desktop sizes
+        run: node tools/washi-bee-review/visual-qa.mjs
+      - name: Save screenshots and browser test report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: washi-bee-mobile-desktop-review
+          path: qa-captures/
+          if-no-files-found: ignore
+          retention-days: 7
