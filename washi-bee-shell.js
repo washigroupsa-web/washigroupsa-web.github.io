@@ -61,6 +61,12 @@ function headerHTML(){
   '</div></div>';
 }
 function footerHTML(){
+ const meeleLinks=location.pathname.endsWith('washi-bee-meele.html')?'<div class="bee-shell-meele-links"><h3>'+safe(t('دليل وشي ميلي','WASHI MEELE Guide'))+'</h3>'+[
+ a('washi-bee-meele.html#meele-product',t('المنتج والمواصفات','Product & Details')),
+ a('washi-bee-meele.html#meele-story',t('قصة وشي ميلي','Our Story')),
+ a('washi-bee-meele.html#meele-making',t('حكاية المكونات','Ingredients Story')),
+ a('washi-bee-meele.html#meele-use',t('طريقة الاستخدام','How to Use'))
+ ].map(v=>v.replace('<a ','<a class="bee-shell-footer-link" ')).join('')+'</div>':'';
  const email=identity.email||'washibee.sa@gmail.com';
  const whatsapp=identity.whatsapp||'https://wa.me/966537505583';
  const social=[
@@ -73,7 +79,7 @@ function footerHTML(){
   '<div><div class="bee-shell-footer-brand"><img src="assets/washi-bee-approved-logo.png" alt="'+safe(t('شعار وشي بي','WASHI BEE logo'))+'"><div><h2>'+safe(t('وشي بي','WASHI BEE'))+'</h2><span>WASHI BEE</span></div></div><p>'+safe(t('من طبيعة اليونان... إلى حياتك. اكتشفي العناية الطبيعية والصابون والعطور والبكجات والهدايا.','From Greek nature to your life. Explore skincare, soaps, perfumes, bundles and gifts.'))+'</p></div>'+
   '<div><h3>'+safe(t('تصفّح الموقع','Explore'))+'</h3>'+
   [a('washi-bee.html',t('الرئيسية','Home')),a('washi-bee-products.html',t('المنتجات','Products')),ext(bundleUrl,t('البكيج والهدايا','Bundles & Gifts')),a('about-washi-bee.html',t('من نحن','About Us')),ext(identity.salla||'https://salla.sa/washi-bee',t('متجر سلة','Salla Store'))].map(s=>s.replace('<a ','<a class="bee-shell-footer-link" ')).join('')+
-  '</div><div><h3>'+safe(t('تواصل معنا','Contact'))+'</h3>'+
+  meeleLinks+'</div><div><h3>'+safe(t('تواصل معنا','Contact'))+'</h3>'+
   ext(whatsapp,t('واتساب بزنس: 0537505583','WhatsApp: +966 53 750 5583')).replace('<a ','<a class="bee-shell-footer-link" ')+
   a('mailto:'+email,email,' class="bee-shell-footer-link"')+
   '<h3>'+safe(t('تابعينا','Follow us'))+'</h3>'+social+
