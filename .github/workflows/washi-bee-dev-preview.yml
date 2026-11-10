@@ -1,0 +1,72 @@
+name: WASHI BEE — development preview snapshot
+on:
+  push:
+    branches:
+      - feature/washi-bee-bundles-2026-11-09
+    paths:
+      - 'washi-bee*.html'
+      - 'about-washi-bee.html'
+      - 'washi-bee*.js'
+      - 'washi-bee*.css'
+      - 'shared.*'
+      - '.github/workflows/washi-bee-dev-preview.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  verify-and-package:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout development branch
+        uses: actions/checkout@v4
+      - name: Validate JavaScript
+        run: |
+          node --check shared.js
+          node --check washi-bee-shell.js
+          node --check washi-bee-bundles.js
+      - name: Validate WASHI BEE asset references
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          from html.parser import HTMLParser
+          class P(HTMLParser):
+              def __init__(self): super().__init__(); self.urls=[]
+              def handle_starttag(self,tag,attrs):
+                  for name,value in attrs:
+                      if name in ('src','href') and value: self.urls.append(value)
+          pages=[Path(p) for p in ['washi-bee.html','washi-bee-products.html','washi-bee-meele.html','washi-bee-sapouni.html','washi-bee-mykonos.html','washi-bee-santorini.html','washi-bee-corfu.html','about-washi-bee.html','washi-bee-gifts.html']]
+          errors=[]
+          for page in pages:
+              p=P();p.feed(page.read_text(encoding='utf-8'))
+              for uri in p.urls:
+                  if uri.startswith(('http:','https:','mailto:','tel:','#','data:')): continue
+                  local=uri.split('#')[0].split('?')[0]
+                  if local and not (page.parent / local).is_file(): errors.append(f'{page}: missing {uri}')
+          if errors: raise SystemExit('\n'.join(errors))
+          print(f'PASS: {len(pages)} WASHI BEE pages have no missing local HTML, CSS, JS or image references')
+          PY
+      - name: Package full development snapshot for offline visual QA
+        run: zip -q -r /tmp/washi-bee-development-snapshot.zip . -x '.git/*' '.github/*'
+      - name: Upload review artifact (not deployed)
+        uses: actions/upload-artifact@v4
+        with:
+          name: washi-bee-development-site-snapshot
+          path: /tmp/washi-bee-development-snapshot.zip
+          retention-days: 7
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install isolated visual testing tools
+        run: |
+          npm install --no-save playwright@1.58.2
+          npx playwright install --with-deps chromium
+      - name: Render WASHI BEE screenshots at mobile and desktop sizes
+        run: node tools/washi-bee-review/visual-qa.mjs
+      - name: Save screenshots and browser test report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: washi-bee-mobile-desktop-review
+          path: qa-captures/
+          if-no-files-found: ignore
+          retention-days: 7
