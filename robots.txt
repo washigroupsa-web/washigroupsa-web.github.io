@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://washigroupsa-web.github.io/sitemap.xml
